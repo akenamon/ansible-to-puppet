@@ -1,0 +1,5 @@
+---
+- hosts: agents
+  roles:
+          - common
+---

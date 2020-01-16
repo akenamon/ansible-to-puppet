@@ -1,0 +1,37 @@
+
+- name: Run the equivalent of "apt-get update" as a separate step
+  apt:
+       update_cache: yes
+
+- name: Run apt dist-upgrade
+  apt:
+       upgrade: dist
+
+- name: Run install some dependencies
+  apt:
+       pkg:
+            - apt-transport-https
+            - ca-certificates
+            - curl
+            - gnupg-agent
+            - software-properties-common
+            - wget 
+            - vim 
+          
+- name: get  puppet package 
+  shell:
+     cmd: wget https://apt.puppetlabs.com/puppet5-release-bionic.deb && dpkg -i puppet5-release-bionic.deb
+        
+- name: Run the equivalent of "apt-get update" as a separate step
+  apt:
+     update_cache: yes
+
+- name: install puppet-agent
+  apt:
+     name: puppet-agent
+
+- name: export puppet binaries
+  shell:
+     cmd: /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true
+
+ 

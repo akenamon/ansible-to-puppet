@@ -1,0 +1,8 @@
+[master]
+puppet
+
+[agents]
+agent0
+agent1
+agent2
+agent3
